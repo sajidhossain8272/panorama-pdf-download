@@ -123,6 +123,7 @@ export default function PdfPreview(): JSX.Element {
         {/* ========== HEADER ========== */}
         <header className="report-header">
           <div className="header-left">
+            
             <Image
               src="/logo.png"
               alt={`${company.companyName} logo`}

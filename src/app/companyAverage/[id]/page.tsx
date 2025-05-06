@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from "react";
-import Image from "next/image";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import GaugeChart from "react-gauge-chart";
@@ -131,22 +130,20 @@ export default function PdfCompanyReport() {
         {/* ========== HEADER ========== */}
         <header className="report-header">
           <div className="header-left">
-            {company.companyLogo && (
-              <Image
-                src={company.companyLogo}
-                alt={`${company.companyName} logo`}
-                width={130}
-                height={50}
-                objectFit="contain"
-              />
-            )}
+            <img
+            src="/logo.png"
+            width={130}
+            height={50}
+          />   
           </div>
           <div className="header-center">
+            
             <h1 className="report-title">{report_name}</h1>
             {reportDate && (
               <p className="report-subtitle">Date: {reportDate}</p>
             )}
-            <p className="report-description">{report_description}</p>
+            
+            <p className="report-description flex justify-center">{report_description}</p>
           </div>
           <div className="header-right">
             <p>Type: {report_type}</p>
@@ -156,14 +153,6 @@ export default function PdfCompanyReport() {
         {/* ========== COMPANY INFO ========== */}
         <div className="company-info" style={{ marginBottom: "1rem" }}>
           <div className="company-name">{company.companyName}</div>
-          <a
-            href={company.website}
-            className="company-website"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🌐 {company.website}
-          </a>
         </div>
 
         <main className="report-content">
@@ -198,7 +187,7 @@ export default function PdfCompanyReport() {
                       />
                       <div className="chart-label">{pct}%</div>
                     </div>
-                    <p className="ml-4 text-base leading-[1.4] text-gray-700 text-justify">
+                    <p className="ml-4 text-base leading-[1.4] text-gray-700 text-justify flex flex-1 gap-4 items-center justify-center">
                       <span
                         className="inline-block w-2 h-2 rounded-full mr-1"
                         style={{ background: getColorByPercentage(item.yesPercentage) }}
@@ -261,7 +250,7 @@ export default function PdfCompanyReport() {
                     />
                     <div className="chart-label">{pct}%</div>
                   </div>
-                  <p className="ml-4 text-base leading-[1.4] text-gray-700 text-justify">
+                  <p className="ml-4 text-base leading-[1.4] text-gray-700 text-justify flex flex-1 gap-4 items-center justify-center">
                     <span
                       className="inline-block w-2 h-2 rounded-full mr-1"
                       style={{ background: getColorByPercentage(blk.yesPercentage) }}
@@ -310,7 +299,7 @@ export default function PdfCompanyReport() {
                           </div>
                           <div className="subblock-text">
                             <strong>{sb.name}</strong>
-                            <p className="ml-3 text-sm leading-snug text-gray-700 text-justify">
+                            <p className="ml-3 text-sm leading-snug text-gray-700 text-justify flex flex-1 gap-4 items-center justify-center">
                               <span
                                 className="inline-block w-2 h-2 rounded-full mr-1"
                                 style={{ background: getColorByPercentage(sb.yesPercentage) }}
@@ -398,6 +387,13 @@ export default function PdfCompanyReport() {
         .legend-color.average  { background: #d69e2e; }
         .legend-color.good     { background: #38a169; }
         .legend-color.excellent{ background: #2f855a; }
+
+        /* — PRINT the background colours —*/
+.legend-color,
+.color-dot {                /* helper class we’ll add below           */
+  -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+}
 
         /* — Charts & Stats — */
         .overall-health { display: flex; align-items: center; }
