@@ -12,7 +12,7 @@ import {
 
 export interface ReportCardProps {
   /** matches one of the keys below for icon selection */
-  id: 'standard' | 'userComparison' | 'timehorizon' | 'companyAverage' | 'individualCompany'
+  id: 'standard' | 'userComparison' | 'timehorizon' | 'companyAverage' | 'individualCompany' | 'invoice'
   title: string
   description: string
   href: string
@@ -27,6 +27,7 @@ const iconMap: Record<
   timehorizon: FiClock,
   companyAverage: FiBarChart2,
   individualCompany: FiUserCheck,
+  invoice: FiFileText,
 }
 
 export const ReportCard: React.FC<ReportCardProps> = ({

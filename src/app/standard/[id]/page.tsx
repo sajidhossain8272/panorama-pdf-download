@@ -51,7 +51,6 @@ interface AssessmentResult {
 
 interface AssessmentObjItem {
   _id: string;
-  question: string;
   ans: string;
 }
 
@@ -99,7 +98,6 @@ export default function PdfPreview(): JSX.Element {
   const {
     AssessmentResult,
     AssessmentResultDescriptions,
-    AssessmentObj,
     UserInformation: user,
     CompanyInformation: company,
   } = data;
@@ -304,28 +302,7 @@ export default function PdfPreview(): JSX.Element {
             );
           })}
 
-          {/* QUESTION ANALYSIS */}
-          <section className="section question-analysis">
-            <h2>Question Analysis</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Question</th>
-                  <th>Answer</th>
-                </tr>
-              </thead>
-              <tbody>
-                {AssessmentObj.map((q, i) => (
-                  <tr key={q._id}>
-                    <td>{i + 1}</td>
-                    <td>{q.question}</td>
-                    <td>{q.ans}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
+         
         </main>
 
         {/* FOOTER */}
@@ -543,21 +520,7 @@ export default function PdfPreview(): JSX.Element {
           line-height: 1.4;
         }
 
-        /* — Question Analysis — */
-        .question-analysis table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        .question-analysis th,
-        .question-analysis td {
-          border: 1px solid #e2e8f0;
-          padding: 0.5rem;
-          font-size: 0.85rem;
-          vertical-align: top;
-        }
-        .question-analysis th {
-          background: #f7fafc;
-        }
+       
 
         /* — Footer — */
         .report-footer {
